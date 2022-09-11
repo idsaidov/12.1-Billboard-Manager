@@ -9,5 +9,4 @@ public class Billboard {
     private String genre;
     private String Url;
     private boolean Announcement;
-
 }

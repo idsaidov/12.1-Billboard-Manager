@@ -13,14 +13,14 @@ public class BillboardManager {
         this.limit = limit;
     }
 
-    public void addMovie(Billboard movie) {
+    public void addBillboard(Billboard movie) {
         int length = billboards.length + 1;
         Billboard[] tmp = Arrays.copyOf(billboards, length);
         tmp[length - 1] = movie;
         billboards = tmp;
     }
 
-    public Billboard[] showAllMovies() {
+    public Billboard[] OutputOfAllMovies() {
         Billboard[] result = new Billboard[billboards.length];
         for (int i = 0; i < result.length; i++) {
             result[i] = billboards[i];
@@ -28,7 +28,7 @@ public class BillboardManager {
         return result;
     }
 
-    public Billboard[] showLastLimitedNumberOfMovies() {
+    public Billboard[] OutputMaximumLimitOfTheLastAddedMovies() {
         int resultLength = (this.limit > billboards.length) ? billboards.length : this.limit;
         Billboard[] result = new Billboard[resultLength];
         for (int i = 0; i < result.length; i++) {
@@ -37,4 +37,5 @@ public class BillboardManager {
         }
         return result;
     }
+
 }
