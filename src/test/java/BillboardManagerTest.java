@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 public class BillboardManagerTest {
     private Billboard poster_one = new Billboard(1, "Крепкий орешек", "боевик", "url1", false);
     private Billboard poster_two = new Billboard(2, "Мистер Бин", "комедия", "url2", false);
@@ -27,45 +26,41 @@ public class BillboardManagerTest {
     }
 
     @Test
-    void shouldAddBillboard() {
+    void shouldAddMovie() {
         BillboardManager emptyManager = new BillboardManager();
         emptyManager.addBillboard(poster_one);
         Billboard[] actual = emptyManager.getBillboards();
         Billboard[] expected = new Billboard[]{poster_one};
         Assertions.assertArrayEquals(expected,actual);
     }
-
     @Test
-    void shouldOutputOfAllMovies() {
+    void shouldShowAllMovies() {
         BillboardManager manager = new BillboardManager();
         this.setUp(manager);
         Billboard[] actual = manager.OutputOfAllMovies();
         Billboard[] expected = new Billboard[]{poster_one, poster_two, poster_three, poster_four, poster_five, poster_six, poster_seven, poster_eght, poster_nine, poster_ten};
         Assertions.assertArrayEquals(expected,actual);
     }
-
     @Test
-    void shouldOutputMaximumLimitOfTheLastAddedMovies(){
+    void shouldShowNoMovies() {
+        BillboardManager emptyManager = new BillboardManager();
+        Billboard[] actual = emptyManager.getBillboards();
+        Billboard[] expected = new Billboard[0];
+        Assertions.assertArrayEquals(expected,actual);
+    }
+    @Test
+    void shouldOutputMaximumLimitOfTheLastAddedMovies() {
         BillboardManager manager = new BillboardManager();
         this.setUp(manager);
         Billboard[] actual = manager.OutputMaximumLimitOfTheLastAddedMovies();
         Billboard[] expected = new Billboard[]{poster_ten, poster_nine, poster_eght, poster_seven, poster_six, poster_five, poster_four, poster_three, poster_two, poster_one};
         Assertions.assertArrayEquals(expected,actual);
     }
-
-    @Test
-    void shouldShowNoMovies() {
-        BillboardManager emptyManager = new BillboardManager();
-        Billboard[] actual = emptyManager.showAllMovies();
-        Billboard[] expected = new Billboard[0];
-        Assertions.assertArrayEquals(expected,actual);
-    }
-
     @Test
     void shouldShowLastMoviesEqualsLimit() {
         BillboardManager manager = new BillboardManager(5);
         this.setUp(manager);
-        Billboard[] actual = manager.showLastLimitedNumberOfMovies();
+        Billboard[] actual = manager.OutputMaximumLimitOfTheLastAddedMovies();
         Billboard[] expected = new Billboard[]{poster_ten, poster_nine, poster_eght, poster_seven, poster_six};
         Assertions.assertArrayEquals(expected,actual);
     }
@@ -74,10 +69,8 @@ public class BillboardManagerTest {
     void shouldShowLastMoviesOverLimit() {
         BillboardManager manager = new BillboardManager(3);
         this.setUp(manager);
-        Billboard[] actual = manager.showLastLimitedNumberOfMovies();
+        Billboard[] actual = manager.OutputMaximumLimitOfTheLastAddedMovies();
         Billboard[] expected = new Billboard[]{poster_ten, poster_nine, poster_eght};
         Assertions.assertArrayEquals(expected,actual);
     }
-
-
 }

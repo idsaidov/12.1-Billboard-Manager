@@ -1,5 +1,6 @@
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.Arrays;
 
 @NoArgsConstructor
@@ -9,9 +10,7 @@ public class BillboardManager {
     private int limit = 10;
     private Billboard[] billboards = new Billboard[0];
 
-    public BillboardManager(int limit) {
-        this.limit = limit;
-    }
+    public BillboardManager(int limit) {this.limit = limit;}
 
     public void addBillboard(Billboard movie) {
         int length = billboards.length + 1;
@@ -36,14 +35,5 @@ public class BillboardManager {
             result[i] = billboards[index];
         }
         return result;
-    }
-
-    public Billboard[] showAllMovies() {
-        return new Billboard[0];
-    }
-
-    public Billboard[] showLastLimitedNumberOfMovies() {
-        Billboard[] billboards1 = new Billboard[0];
-        return billboards1;
     }
 }
