@@ -1,4 +1,3 @@
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -51,6 +50,32 @@ public class BillboardManagerTest {
         this.setUp(manager);
         Billboard[] actual = manager.OutputMaximumLimitOfTheLastAddedMovies();
         Billboard[] expected = new Billboard[]{poster_ten, poster_nine, poster_eght, poster_seven, poster_six, poster_five, poster_four, poster_three, poster_two, poster_one};
+        Assertions.assertArrayEquals(expected,actual);
+    }
+
+    @Test
+    void shouldShowNoMovies() {
+        BillboardManager emptyManager = new BillboardManager();
+        Billboard[] actual = emptyManager.showAllMovies();
+        Billboard[] expected = new Billboard[0];
+        Assertions.assertArrayEquals(expected,actual);
+    }
+
+    @Test
+    void shouldShowLastMoviesEqualsLimit() {
+        BillboardManager manager = new BillboardManager(5);
+        this.setUp(manager);
+        Billboard[] actual = manager.showLastLimitedNumberOfMovies();
+        Billboard[] expected = new Billboard[]{poster_ten, poster_nine, poster_eght, poster_seven, poster_six};
+        Assertions.assertArrayEquals(expected,actual);
+    }
+
+    @Test
+    void shouldShowLastMoviesOverLimit() {
+        BillboardManager manager = new BillboardManager(3);
+        this.setUp(manager);
+        Billboard[] actual = manager.showLastLimitedNumberOfMovies();
+        Billboard[] expected = new Billboard[]{poster_ten, poster_nine, poster_eght};
         Assertions.assertArrayEquals(expected,actual);
     }
 

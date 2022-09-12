@@ -38,4 +38,12 @@ public class BillboardManager {
         return result;
     }
 
+    public Billboard[] showAllMovies() {
+        return new Billboard[0];
+    }
+
+    public Billboard[] showLastLimitedNumberOfMovies() {
+        Billboard[] billboards1 = new Billboard[0];
+        return billboards1;
+    }
 }
